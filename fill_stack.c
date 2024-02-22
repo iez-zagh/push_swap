@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   fill_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/16 17:39:43 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/02/18 14:26:59 by iez-zagh         ###   ########.fr       */
+/*   Created: 2024/02/17 19:57:00 by iez-zagh          #+#    #+#             */
+/*   Updated: 2024/02/17 20:57:59 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	f(void)
+t_list	*fill_stack_a(char *str, int size)
 {
-	system("leaks push_swap");
-}
+	int				i;
+	static t_list	*stack_a;
 
-int	main(int ac, char **av)
-{
-	// atexit(f);
-	if (ac == 1)
-		return (1);
-	prepare_stack(ac, av);
+	i = 0;
+	while (str[i])
+	{
+		i++;
+		size--;
+	}
+	return (stack_a);
 }

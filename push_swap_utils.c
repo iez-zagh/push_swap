@@ -6,22 +6,75 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 17:39:51 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/02/17 16:17:22 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/02/22 17:39:02 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
+
+int	check_the_smallest(char	*s)
+{
+	char	*d;
+	int		i;
+
+	i = 0;
+	d = "-2147483648";
+	while (d[i] || s[i])
+	{
+		if (d[i] != s[i])
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+long	ft_atoi(char *s)
+{
+	int		sign;
+	long	res;
+	int		i;
+
+	if (!check_the_smallest(s))
+		return (-2147483648);
+	sign = 1;
+	res = 0;
+	i = 0;
+	if (s[i] == '-' || s[i] == '+')
+	{
+		if (s[i++] == '-')
+			sign *= -1;
+	}
+	while (s[i])
+	{
+		res = res * 10 + s[i++] - '0';
+		if (res < 0 || res > 2147483647)
+		{
+			ft_printf(RED_TEXT"Error\n"RESET_TEXT);
+			exit (1);
+		}
+	}
+	return (res * sign);
+}
+
+void	if_just_spaces(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] && s[i] == ' ')
+		i++;
+	if (ft_strlen(s) == i)
+	{
+		ft_printf(RED_TEXT"Error\n"RESET_TEXT);
+		exit (1);
+	}
+}
 
 void	checker(const char *str)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
-	while (str[i] && (str[i] == ' ' || str[i] == '\t'))
-		i++;
 	while (str[i])
 	{
 		if (str[i] == '-' || str[i] == '+')
@@ -29,95 +82,56 @@ void	checker(const char *str)
 			if (!(str[i + 1] >= '0' && str[i + 1] <= '9')
 				|| (str[i - 1] >= '0' && str[i - 1] <= '9'))
 			{
-				printf("Error\n");
+				ft_printf(RED_TEXT"Error\n"RESET_TEXT);
 				exit (1);
 			}
 		}
-		else if (!(str[i] >= '0' && str[i] <= '9')
-			&& (str[i] != ' ' && str[i] != '\t'))
+		else if (!(str[i] >= '0' && str[i] <= '9') && (str[i] != ' '))
 		{
-			printf("Error\n");
+			ft_printf(RED_TEXT"Error\n"RESET_TEXT);
 			exit (1);
 		}
 		i++;
 	}
 }
 
-int	ft_strlen(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		i++;
-	}
-	return (i);
-}
-
 void	prepare_stack(int ac, char **av)
 {
-	int	i;
-	static	int	numbers;
+	int				i;
+	static char		*numbers = NULL;
+	char			**res;
+	static t_list	*node1;
 
 	i = 1;
-	numbers = 0;
 	while (i < ac)
 	{
+		if_just_spaces(av[i]);
 		checker(av[i]);
+		numbers = ft_strjoin(numbers, av[i], ac, i);
 		i++;
 	}
-}
-
-int	count_words(const char *str)
-{
-	int	i;
-	int	k;
-	int	counter;
-
-	i = 0;
-	k = 0;
-	counter = 0;
-	while (str[i])
+	res = ft_split(numbers);
+	free (numbers);
+	node1 = malloc(sizeof(t_list));
+	node1->data = ft_atoi(res[0]);
+	t_list *tmp = node1;
+	t_list *tmp2 = node1;
+	node1->next = NULL;
+	i = 1;
+	while (res[i])
 	{
-		if (str[i] != ' ' && str[i] != '\t')
-		{
-			counter++;
-			while (str[i] && str[i] != ' ' && str[i] != '\t')
-			{
-				i++;
-			}
-			i--;
-		}
-		i++;
+		check_duplicate(node1, ft_atoi(res[i]));
+		ft_lstadd_back(&node1, ft_lstnew(ft_atoi(res[i])));
+		free (res[i++]);
 	}
-	return (counter);
+	ft_sa(&tmp, 'a');
+	while (tmp2)
+	{
+		if (tmp2->next)
+			ft_printf("%d ", tmp2->data);
+		else
+			ft_printf("%d", tmp2->data);
+		tmp2 = tmp2->next;
+	}
+	free (res);
 }
-
-// void	ft_split(char *str)
-// {
-// 	int		n_words;
-// 	int		index;
-// 	int		i;
-// 	char	**res;
-// 	char	res1;
-// 	int 	j;
-
-// 	i = 0;
-// 	index = 0;
-// 	n_words = count_words(str);
-// 	res = malloc(sizeof(char *) * n_words);
-// 	while (str[i])
-// 	{
-// 		if (str[i] != ' ' && str[i] != '\t')
-// 		{
-// 			while(str[i] && str[i] != ' ' && str[i] != '\t')
-// 			{
-// 				index++;
-// 				i++;
-// 			}
-// 			i--;
-// 		}
-// 		i++;
-// 	}
-// }

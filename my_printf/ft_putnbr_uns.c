@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_uns.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/16 17:39:43 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/02/18 14:26:59 by iez-zagh         ###   ########.fr       */
+/*   Created: 2023/11/21 12:35:00 by iez-zagh          #+#    #+#             */
+/*   Updated: 2023/11/29 09:24:27 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_printf.h"
 
-void	f(void)
+void	ft_putnbr_uns(unsigned int nbr, int *len)
 {
-	system("leaks push_swap");
-}
-
-int	main(int ac, char **av)
-{
-	// atexit(f);
-	if (ac == 1)
-		return (1);
-	prepare_stack(ac, av);
+	if (nbr < 10)
+		ft_putchar(nbr + '0', len);
+	else
+	{
+		ft_putnbr_uns(nbr / 10, len);
+		ft_putnbr_uns(nbr % 10, len);
+	}
 }

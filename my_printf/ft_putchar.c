@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/16 17:39:43 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/02/18 14:26:59 by iez-zagh         ###   ########.fr       */
+/*   Created: 2023/11/19 20:48:44 by iez-zagh          #+#    #+#             */
+/*   Updated: 2023/11/27 17:29:03 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_printf.h"
 
-void	f(void)
+void	ft_putchar(char c, int *len)
 {
-	system("leaks push_swap");
-}
-
-int	main(int ac, char **av)
-{
-	// atexit(f);
-	if (ac == 1)
-		return (1);
-	prepare_stack(ac, av);
+	write(1, &c, 1);
+	(*len)++;
 }

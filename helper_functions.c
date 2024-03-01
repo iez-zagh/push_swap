@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 20:15:31 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/02/18 13:02:08 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/01 16:12:18 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,21 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	res[i] = '\0';
 	return (res);
+}
+
+int	*sort_arr(int *arr, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		if (arr[i] > arr[i + 1])
+		{
+			swap(&arr[i], &arr[i + 1]);
+			i = -1;
+		}
+		i++;
+	}
+	return (arr);
 }

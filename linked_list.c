@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 14:35:44 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/02/21 20:41:31 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/01 15:41:13 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	{
 		n_adrs = ft_lstlast(*lst);
 		n_adrs->next = new;
+		new->next = NULL;
 		return ;
 	}
 	*lst = new;
@@ -40,7 +41,7 @@ t_list	*ft_lstlast(t_list *lst)
 
 t_list	*ft_lstnew(int content)
 {
-	t_list	*node;
+	t_list		*node;
 
 	node = (t_list *)malloc(sizeof(t_list));
 	if (!node)
@@ -53,7 +54,9 @@ t_list	*ft_lstnew(int content)
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	if (lst && new)
+	{
 		new->next = *lst;
+	}
 	if (new)
 		*lst = new;
 }
@@ -66,7 +69,7 @@ void	check_duplicate(t_list *node, int n)
 	{
 		if (node->data == n)
 		{
-			printf("Error\n");
+			print_error();
 			exit (1);
 		}
 		node = node->next;

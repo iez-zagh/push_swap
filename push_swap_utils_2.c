@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_uns.c                                    :+:      :+:    :+:   */
+/*   push_swap_utils_2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 12:35:00 by iez-zagh          #+#    #+#             */
-/*   Updated: 2023/11/29 09:24:27 by iez-zagh         ###   ########.fr       */
+/*   Created: 2024/02/23 17:27:09 by iez-zagh          #+#    #+#             */
+/*   Updated: 2024/02/23 17:29:00 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "push_swap.h"
 
-void	ft_putnbr_uns(unsigned int nbr, int *len)
+int	check_if_sorted(t_list **begin)
 {
-	if (nbr < 10)
-		ft_putchar(nbr + '0', len);
-	else
+	t_list	*tmp;
+
+	tmp = *begin;
+	while (tmp && tmp->next)
 	{
-		ft_putnbr_uns(nbr / 10, len);
-		ft_putnbr_uns(nbr % 10, len);
+		if (tmp->data > tmp->next->data)
+			return (1);
+		tmp = tmp->next;
 	}
+	return (0);
 }

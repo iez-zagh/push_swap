@@ -4,39 +4,32 @@ YELLOW_TEXT =\033[1;33m
 RESET_TEXT =\033[0m
 
 NAME = push_swap
-CC = cc
+CC = gcc
 FLAGS = -Wextra -Wall -Werror
 # printf things
-PRINTF_PATH = ./my_printf
-PRINTF_NAME = ftprintf
 # the source codes
-M_SOURCES = push_swap.c push_swap_utils.c fill_stack.c helper_functions.c ft_split.c \
-			linked_list.c stack_moves.c
+M_SOURCES = push_swap.c push_swap_utils.c helper_functions.c ft_split.c \
+			linked_list.c stack_moves.c push_swap_utils_2.c linked_list_2.c stack_moves_2.c \
+			sorting.c fill_stack.c min_max.c moving_to_b.c sort_more_6.c best_target.c
 M_OBJECTS = ${M_SOURCES:.c=.o}
 
-all: printf $(NAME)
-
+all: $(NAME)
 
 %.o: %.c push_swap.h
-	@$(CC)  $(FLAGS) -c $< -o $@
-
-printf: push_swap.h
-	@make -C $(PRINTF_PATH)
+	@$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): $(M_OBJECTS)
 	@echo "$(GREEN_TEXT)[the excutable created successfuly]$(RESET_TEXT)"
-	@$(CC)  $(FLAGS) -L$(PRINTF_PATH) -lftprintf $(M_OBJECTS) -o $(NAME)
+	@$(CC) $(FLAGS)  $(M_OBJECTS) -o $(NAME)
 
 
 clean:
 	@rm -f $(M_OBJECTS)
-	@make clean -C $(PRINTF_PATH)
 	@echo "$(RED_TEXT)object files removed successfuly$(RESET_TEXT)"
 fclean : clean
 	@rm -f $(NAME)
-	@make fclean -C $(PRINTF_PATH)
 	@echo "$(RED_TEXT)the excutable files removed successfuly$(RESET_TEXT)"
 
-re : fclean all printf
+re : fclean all
 
 .PHONY : clean

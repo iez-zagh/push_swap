@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_adress.c                                  :+:      :+:    :+:   */
+/*   linked_list_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 01:56:32 by iez-zagh          #+#    #+#             */
-/*   Updated: 2023/11/29 09:24:04 by iez-zagh         ###   ########.fr       */
+/*   Created: 2024/02/23 17:31:59 by iez-zagh          #+#    #+#             */
+/*   Updated: 2024/02/25 16:26:44 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "push_swap.h"
 
-void	ft_print_adress(unsigned long long nbr, int *len)
+int	ft_lstsize(t_list *node)
 {
-	char				*base;
-	unsigned long long	b_len;
+	int	size;
 
-	b_len = 16;
-	base = "0123456789abcdef";
-	if (nbr < b_len)
-		ft_putchar(base[nbr], len);
-	else
+	if (!node)
+		return (0);
+	size = 0;
+	while (node)
 	{
-		ft_print_adress(nbr / b_len, len);
-		ft_print_adress(nbr % b_len, len);
+		size++;
+		node = node->next;
 	}
+	return (size);
 }

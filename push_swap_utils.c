@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 17:39:51 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/02/22 17:39:02 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/01 15:36:46 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ long	ft_atoi(char *s)
 		res = res * 10 + s[i++] - '0';
 		if (res < 0 || res > 2147483647)
 		{
-			ft_printf(RED_TEXT"Error\n"RESET_TEXT);
+			print_error();
 			exit (1);
 		}
 	}
@@ -65,7 +65,7 @@ void	if_just_spaces(char *s)
 		i++;
 	if (ft_strlen(s) == i)
 	{
-		ft_printf(RED_TEXT"Error\n"RESET_TEXT);
+		print_error();
 		exit (1);
 	}
 }
@@ -82,13 +82,13 @@ void	checker(const char *str)
 			if (!(str[i + 1] >= '0' && str[i + 1] <= '9')
 				|| (str[i - 1] >= '0' && str[i - 1] <= '9'))
 			{
-				ft_printf(RED_TEXT"Error\n"RESET_TEXT);
+				print_error();
 				exit (1);
 			}
 		}
 		else if (!(str[i] >= '0' && str[i] <= '9') && (str[i] != ' '))
 		{
-			ft_printf(RED_TEXT"Error\n"RESET_TEXT);
+			print_error();
 			exit (1);
 		}
 		i++;
@@ -98,9 +98,8 @@ void	checker(const char *str)
 void	prepare_stack(int ac, char **av)
 {
 	int				i;
-	static char		*numbers = NULL;
+	static char		*numbers;
 	char			**res;
-	static t_list	*node1;
 
 	i = 1;
 	while (i < ac)
@@ -112,26 +111,6 @@ void	prepare_stack(int ac, char **av)
 	}
 	res = ft_split(numbers);
 	free (numbers);
-	node1 = malloc(sizeof(t_list));
-	node1->data = ft_atoi(res[0]);
-	t_list *tmp = node1;
-	t_list *tmp2 = node1;
-	node1->next = NULL;
-	i = 1;
-	while (res[i])
-	{
-		check_duplicate(node1, ft_atoi(res[i]));
-		ft_lstadd_back(&node1, ft_lstnew(ft_atoi(res[i])));
-		free (res[i++]);
-	}
-	ft_sa(&tmp, 'a');
-	while (tmp2)
-	{
-		if (tmp2->next)
-			ft_printf("%d ", tmp2->data);
-		else
-			ft_printf("%d", tmp2->data);
-		tmp2 = tmp2->next;
-	}
+	filling(res);
 	free (res);
 }

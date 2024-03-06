@@ -6,7 +6,7 @@ RESET_TEXT =\033[0m
 NAME = push_swap
 BONUS = checker
 CC = gcc
-FLAGS = -Wextra -Wall -Werror
+FLAGS = -Wextra -Wall -Werror -g
 
 # the source codes
 M_SOURCES = push_swap.c push_swap_utils.c helper_functions.c ft_split.c \
@@ -15,7 +15,8 @@ M_SOURCES = push_swap.c push_swap_utils.c helper_functions.c ft_split.c \
 
 B_SOURCES = utils2_bonus.c utils_bonus.c checker_bonus.c fill_stack_bonus.c \
 			ft_split_bonus.c linked_list_bonus.c prepare_stack_bonus.c \
-			get_next_line_bonus.c get_next_line_utils_bonus.c apply_ins_bonus.c
+			get_next_line_bonus.c get_next_line_utils_bonus.c apply_ins_bonus.c \
+			stack_moves_bonus.c stack_moves2_bonus.c
 B_OBJECTS = ${B_SOURCES:.c=.o}
 M_OBJECTS = ${M_SOURCES:.c=.o}
 

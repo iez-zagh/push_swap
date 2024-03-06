@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bonus_utils2.c                                     :+:      :+:    :+:   */
+/*   utils2_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 20:11:45 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/04 20:32:48 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/06 09:58:22 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,13 @@ int	check_if_sorted2(t_list **begin)
 		tmp = tmp->next;
 	}
 	return (0);
+}
+
+t_list	*ft_before_last2(t_list *begin)
+{
+	if (!begin)
+		return (NULL);
+	while (begin->next->next)
+		begin = begin->next;
+	return (begin);
 }

@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 18:25:35 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/05 22:52:46 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/06 20:29:32 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,14 @@ int	main(int ac, char **av)
 	t_list	*instrucs;
 	t_stack	*stack_a;
 
-	atexit(f);
+	// atexit(f);
 	if (ac == 1)
 		return (1);
 	instrucs = NULL;
 	stack_a = prepare_stack2(ac, av);
 	apply(&instrucs);
-	print_list2(stack_a->top);
-	puts ("----");
-	print_list2(instrucs);
-	// sort(instrucs, )
+	sort(instrucs, stack_a);
+	return (0);
 }
 
 void	print_error2(void)

@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 10:39:34 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/01 16:16:01 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/04 18:13:24 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,6 @@ void	ft_rr(t_list **stack_a, t_list **stack_b)
 	ft_ra(stack_a, 'a');
 	ft_ra(stack_b, 'b');
 	write(1, "rr\n", 3);
-}
-
-void	free_list(t_list *node)
-{
-	t_list *tmp;
-	while (node)
-	{
-		tmp = node;
-		// printf("%d ", node->data);
-		node = node->next;
-		free(tmp);
-	}
 }
 
 int	ft_search(t_list *node, int *tab, int size)

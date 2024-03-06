@@ -4,13 +4,19 @@ YELLOW_TEXT =\033[1;33m
 RESET_TEXT =\033[0m
 
 NAME = push_swap
+BONUS = checker
 CC = gcc
 FLAGS = -Wextra -Wall -Werror
-# printf things
+
 # the source codes
 M_SOURCES = push_swap.c push_swap_utils.c helper_functions.c ft_split.c \
 			linked_list.c stack_moves.c push_swap_utils_2.c linked_list_2.c stack_moves_2.c \
 			sorting.c fill_stack.c min_max.c moving_to_b.c sort_more_6.c best_target.c
+
+B_SOURCES = utils2_bonus.c utils_bonus.c checker_bonus.c fill_stack_bonus.c \
+			ft_split_bonus.c linked_list_bonus.c prepare_stack_bonus.c \
+			get_next_line_bonus.c get_next_line_utils_bonus.c apply_ins_bonus.c
+B_OBJECTS = ${B_SOURCES:.c=.o}
 M_OBJECTS = ${M_SOURCES:.c=.o}
 
 all: $(NAME)
@@ -18,17 +24,28 @@ all: $(NAME)
 %.o: %.c push_swap.h
 	@$(CC) $(FLAGS) -c $< -o $@
 
-$(NAME): $(M_OBJECTS)
-	@echo "$(GREEN_TEXT)[the excutable created successfuly]$(RESET_TEXT)"
-	@$(CC) $(FLAGS)  $(M_OBJECTS) -o $(NAME)
+%_bonus.o: %_bonus.c push_swap_bonus.h
+	@$(CC) $(FLAGS) -c $< -o $@
 
+bonus: $(BONUS)
+
+$(NAME): $(M_OBJECTS)
+	@echo "$(GREEN_TEXT)[the executable created successfully]$(RESET_TEXT)"
+	@$(CC) $(FLAGS) $(M_OBJECTS) -o $(NAME)
+
+$(BONUS): $(B_OBJECTS)
+	@echo "$(GREEN_TEXT)[the executable created successfully]$(RESET_TEXT)"
+	@$(CC) $(FLAGS) $(B_OBJECTS) -o $(BONUS)
 
 clean:
 	@rm -f $(M_OBJECTS)
-	@echo "$(RED_TEXT)object files removed successfuly$(RESET_TEXT)"
+	@rm -f $(B_OBJECTS)
+	@echo "$(RED_TEXT)object files removed successfully$(RESET_TEXT)"
+
 fclean : clean
 	@rm -f $(NAME)
-	@echo "$(RED_TEXT)the excutable files removed successfuly$(RESET_TEXT)"
+	@rm -f $(BONUS)
+	@echo "$(RED_TEXT)the executable files removed successfully$(RESET_TEXT)"
 
 re : fclean all
 

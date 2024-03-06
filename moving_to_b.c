@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 13:47:47 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/01 15:46:45 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/04 11:17:33 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	indexing(t_stack *stack)
 
 	stack->size = ft_lstsize(stack->top);
 	stack->average_index = stack->size / 2;
-	stack->mid_average = (ft_min(stack->top)->data + ft_max(stack->top)->data) / 2;
+	stack->mid_average = (ft_min(stack->top)->data
+			+ ft_max(stack->top)->data) / 2;
 	index = stack->average_index;
 	node = stack->top;
 	i = 0;

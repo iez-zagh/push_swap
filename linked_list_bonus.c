@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linked_list.c                                      :+:      :+:    :+:   */
+/*   linked_list_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/18 14:35:44 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/04 11:15:34 by iez-zagh         ###   ########.fr       */
+/*   Created: 2024/03/04 20:18:32 by iez-zagh          #+#    #+#             */
+/*   Updated: 2024/03/05 18:08:44 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back2(t_list **lst, t_list *new)
 {
 	t_list	*n_adrs;
 
@@ -20,7 +20,8 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		return ;
 	if (*lst)
 	{
-		n_adrs = ft_lstlast(*lst);
+	// puts("hi");
+		n_adrs = ft_lstlast2(*lst);
 		n_adrs->next = new;
 		new->next = NULL;
 		return ;
@@ -28,18 +29,16 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	*lst = new;
 }
 
-t_list	*ft_lstlast(t_list *lst)
+t_list	*ft_lstlast2(t_list *lst)
 {
 	if (lst == NULL)
 		return (NULL);
-	while (lst->next != NULL)
-	{
+	while (lst->next)
 		lst = lst->next;
-	}
 	return (lst);
 }
 
-t_list	*ft_lstnew(int content)
+t_list	*ft_lstnew2(int content)
 {
 	t_list		*node;
 
@@ -51,7 +50,7 @@ t_list	*ft_lstnew(int content)
 	return (node);
 }
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_front2(t_list **lst, t_list *new)
 {
 	if (lst && new)
 	{
@@ -61,7 +60,7 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 		*lst = new;
 }
 
-void	check_duplicate(t_list *node, int n)
+void	check_duplicate2(t_list *node, int n)
 {
 	if (!node)
 		return ;
@@ -69,7 +68,7 @@ void	check_duplicate(t_list *node, int n)
 	{
 		if (node->data == n)
 		{
-			print_error();
+			print_error2();
 			exit (1);
 		}
 		node = node->next;

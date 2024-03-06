@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 17:39:33 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/01 16:15:33 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/04 22:30:32 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 // the nedeed libraries
 # include <unistd.h>
 # include <stdlib.h>
-#include <stdio.h>
+# include <stdio.h>
 
 // for Ansi colors
-# define RED_TEXT "\033[1;31m"
+# define RED_TEXT "\033[1:31m"
 # define GREEN_TEXT "\033[1;32m"
 # define YELLOW_TEXT "\033[1;33m"
 # define RESET_TEXT "\033[0m"
@@ -34,6 +34,7 @@ typedef struct s_list
 	int				index_to_m;
 	int				index;
 	int				index_b;
+	int				cost2;
 }	t_list;
 
 typedef struct s_stack
@@ -45,7 +46,6 @@ typedef struct s_stack
 }	t_stack;
 
 // the funtions's prototype
-void	free_list(t_list *node);
 void	print_error(void);
 void	sort2_3(t_stack *stack);
 int		ft_strlen(const char *s);
@@ -69,9 +69,9 @@ void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_sa(t_list **stack_a, char a_or_b);
 t_list	*ft_ra(t_list **stack, char a_or_b);
 void	ft_rr(t_list **stack_a, t_list **stack_b);
-t_list	*ft_rra(t_list **stack, char a_or_b);
+void	ft_rra(t_stack *sstack, char a_or_b);
 void	ft_ss(t_list **stack_a, t_list **stack_b);
-void	ft_rrr(t_list **stack_a, t_list **stak_b);
+void	ft_rrr(t_stack *stack_a, t_stack *stack_b);
 t_list	*ft_pb(t_list **stack_a, t_list **stack_b);
 int		ft_lstsize(t_list *node);
 int		check_if_sorted(t_list **begin);
@@ -85,16 +85,17 @@ void	sort_4(t_stack *stack);
 t_list	*get_min_top(t_stack *stack, t_list *tmp);
 void	sort_5(t_stack *stack);
 void	move_to_b(t_stack *sstack_a);
-t_list *find_target(int y, t_list *stack);
+t_list	*find_target(int y, t_list *stack);
 void	geting_targets(t_stack *sstack_a, t_stack *sstack_b);
-int		ft_search(t_list *node, int *tab, int size);
-void	bubblesort(t_stack *stack);
-int		*sort_arr(int *arr, int size);
 void	count_cost(t_stack *sstack_b, t_stack *sstack_a);
 void	geting_count(t_stack *stack);
 t_list	*ft_min_cost(t_stack *stack);
-t_list	*get_min_top2(t_stack *stack, t_list *tmp);
+void	get_min_top2(t_stack *stack_a, t_stack *stack_b, t_list *tmp);
 void	sorting(t_stack *sstack_a, t_stack *sstack_b);
-
+int		reducing(t_stack *stack_a, t_stack *stack_b, t_list **tmp);
+void	moving(t_stack *stack_a, t_stack *stack_b, t_list **tmp);
+void	pushing_to_b(t_stack **sstack_a, t_list **stack_a, t_list **stack_b);
+void	sort_the_rest(t_stack *stack_a, t_stack *stack_b, int j, t_list *tmp);
+void	sort0(t_stack *stack_a);
 
 #endif

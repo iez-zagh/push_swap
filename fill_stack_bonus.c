@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_stack.c                                       :+:      :+:    :+:   */
+/*   fill_stack_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/17 19:57:00 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/05 15:25:29 by iez-zagh         ###   ########.fr       */
+/*   Created: 2024/03/04 20:09:22 by iez-zagh          #+#    #+#             */
+/*   Updated: 2024/03/05 22:54:06 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
-void	filling(char **res)
+t_stack	*filling2(char **res)
 {
 	t_list	*node;
 	t_stack	*stack_a;
@@ -21,30 +21,46 @@ void	filling(char **res)
 	i = 1;
 	node = malloc(sizeof(t_list));
 	if (!node)
-		return ;
-	node->data = ft_atoi(res[0]);
+		return (NULL);
+	node->data = ft_atoi2(res[0]);
 	node->next = NULL;
 	stack_a = malloc (sizeof(t_stack));
 	if (!stack_a)
-		return ;
+		return (NULL);
 	stack_a->top = node;
 	free (res[0]);
 	while (res[i])
 	{
-		check_duplicate(node, ft_atoi(res[i]));
-		ft_lstadd_back(&node, ft_lstnew(ft_atoi(res[i])));
-		free (res[i++]);
+		check_duplicate2(node, ft_atoi2(res[i]));
+		ft_lstadd_back2(&node, ft_lstnew2(ft_atoi2(res[i])));
+		free(res[i++]);
 	}
-	sort0(stack_a);
+	free (res);
+	return (stack_a);
 }
 
-void	sort0(t_stack *stack_a)
+int	ft_lstsize2(t_list *node)
 {
-	if (!check_if_sorted(&stack_a->top))
-		exit (0);
-	indexing(stack_a);
-	if (stack_a->size <= 5)
-		sort2_3(stack_a);
-	else
-		move_to_b(stack_a);
+	int	size;
+
+	if (!node)
+		return (0);
+	size = 0;
+	while (node)
+	{
+		size++;
+		node = node->next;
+	}
+	return (size);
+}
+
+void	print_list2(t_list *tmp)
+{
+	while (tmp)
+	{
+		t_list *node = tmp;
+		printf("%d\n", tmp->data);
+		tmp = tmp->next;
+		free (node);
+	}
 }

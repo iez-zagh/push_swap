@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 11:59:46 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/04 18:04:23 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/09 17:54:15 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	sort_the_rest(t_stack *stack_a, t_stack *stack_b, int j, t_list *tmp)
 	}
 	while (j > 0 && tmp->target->index_to_m > 0)
 	{
-		stack_a->top = ft_ra(&stack_a->top, 'a');
+		ft_ra(&stack_a->top, 'a');
 		j--;
 	}
 	j = tmp->index;
@@ -86,7 +86,7 @@ void	sort_the_rest(t_stack *stack_a, t_stack *stack_b, int j, t_list *tmp)
 	}
 	while (j > 0 && tmp->index_to_m > 0)
 	{
-		stack_b->top = ft_ra(&stack_b->top, 'b');
+		ft_ra(&stack_b->top, 'b');
 		j--;
 	}
 }

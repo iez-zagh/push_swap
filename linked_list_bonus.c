@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 20:18:32 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/05 18:08:44 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/10 11:42:29 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	ft_lstadd_back2(t_list **lst, t_list *new)
 		return ;
 	if (*lst)
 	{
-	// puts("hi");
 		n_adrs = ft_lstlast2(*lst);
 		n_adrs->next = new;
 		new->next = NULL;

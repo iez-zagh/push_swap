@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 17:39:33 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/04 22:30:32 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/10 11:45:58 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_stack
 
 // the funtions's prototype
 void	print_error(void);
+void	free_list(t_list *node);
 void	sort2_3(t_stack *stack);
 int		ft_strlen(const char *s);
 void	prepare_stack(int ac, char **av);
@@ -66,9 +67,9 @@ void	check_duplicate(t_list *node, int n);
 int		check_the_smallest(char	*s);
 t_list	*ft_before_last(t_list *begin);
 void	ft_lstadd_front(t_list **lst, t_list *new);
-void	ft_sa(t_list **stack_a, char a_or_b);
+void	ft_sa(t_list *stack_a, char a_or_b);
 t_list	*ft_ra(t_list **stack, char a_or_b);
-void	ft_rr(t_list **stack_a, t_list **stack_b);
+void	ft_rr(t_stack **stack_a, t_stack **stack_b);
 void	ft_rra(t_stack *sstack, char a_or_b);
 void	ft_ss(t_list **stack_a, t_list **stack_b);
 void	ft_rrr(t_stack *stack_a, t_stack *stack_b);

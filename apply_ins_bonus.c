@@ -6,13 +6,13 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 22:37:09 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/06 20:40:44 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/10 16:54:24 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-void	apply(t_list **ins)
+void	apply(t_list **ins, t_stack *stack_a)
 {
 	int		u;
 	char	*res;
@@ -25,20 +25,19 @@ void	apply(t_list **ins)
 	while (res)
 	{
 		u = checking(res);
+		free(res);
 		if (u == 0)
 		{
 			write(2, "Error\n", 6);
+			free(stack_a);
 			exit (0);
 		}
 		ft_lstadd_back2(ins, ft_lstnew2(u));
-		free(res);
 		res = get_next_line(0);
 	}
 	tmp = *ins;
 	(*ins) = (*ins)->next;
 	free (tmp);
-	print_list2(*ins);
-	exit (0);
 }
 
 int	checking(char *res)
@@ -70,48 +69,77 @@ int	checking(char *res)
 
 void	sort(t_list *ins, t_stack *stack_a)
 {
-	t_stack	*sstack_b;
-	t_list	*stack_b;
+	t_stack	*stack_b;
+	t_list	*sstack_b;
+	t_list	*tmp;
 
-	sstack_b = malloc(sizeof(t_stack));
-	stack_b = malloc(sizeof(t_list));
-	stack_b->next = NULL;
-	sstack_b->top = stack_b;
+	tmp = ins;
+	sstack_b = NULL;
+	stack_b = malloc(sizeof(t_stack));
+	if (!stack_b)
+		return ;
+	stack_b->top = sstack_b;
 	while (ins)
 	{
-		if(ins->data == 1)
-			ft_rra2(stack_a);
-		else if (ins->data == 2)
-			ft_rra2(stack_a);
-		else if (ins->data == 3)
-			ft_rrr2(stack_a, sstack_b);
-		else if (ins->data == 4)
-			stack_a->top = ft_ra2(&stack_a->top);
-		else if (ins->data == 5)
-			sstack_b->top = ft_ra2(&sstack_b->top);
-		else if (ins->data == 6)
-		{
-			stack_a->top = ft_ra2(&stack_a->top);
-			sstack_b->top = ft_ra2(&sstack_b->top);
-		}
-		else if (ins->data == 7)
-			ft_sa2(&stack_a->top);
-		else if (ins->data == 8)
-			ft_sa2(&sstack_b->top);
-		else if (ins->data == 9)
-			ft_ss2(&stack_a->top, &sstack_b->top);
-		else if (ins->data == 10)
-			stack_a->top = ft_pa2(&stack_a->top, &sstack_b->top);
-		else if (ins->data == 11)
-			sstack_b->top = ft_pa2(&stack_a->top, &sstack_b->top);
+		sorting(stack_a, stack_b, ins->data);
 		ins = ins->next;
 	}
-	if (!check_if_sorted2(&stack_a->top))
-	{
-		free(stack_a);
-		free(sstack_b);
+	if (!check_if_sorted2(&stack_a->top) && ft_lstsize2(stack_b->top) == 0
+		&& ft_lstsize2(stack_a->top) > 0)
 		write(1, "OK\n", 3);
-	}
 	else
 		write(1, "KO\n", 3);
+	free_list2(stack_a);
+	free_list2(stack_b);
+	free_list3(tmp);
+}
+
+void	free_list2(t_stack *node)
+{
+	t_list	*tmp;
+	t_list	*tmp2;
+
+	tmp2 = node->top;
+	while (tmp2)
+	{
+		tmp = tmp2;
+		tmp2 = tmp2->next;
+		free(tmp);
+	}
+	free(node);
+}
+
+void	sorting(t_stack *stack_a, t_stack *stack_b, int ins)
+{
+	if (ins == 1)
+		ft_rra2(stack_a);
+	else if (ins == 2)
+		ft_rra2(stack_b);
+	else if (ins == 3)
+		ft_rrr2(stack_a, stack_b);
+	else if (ins == 4)
+		stack_a->top = ft_ra2(stack_a->top);
+	else if (ins == 5)
+		stack_b->top = ft_ra2(stack_b->top);
+	else if (ins == 6)
+		ft_rr2(stack_a->top, stack_b->top);
+	else if (ins == 7)
+		ft_sa2(&stack_a->top);
+	else if (ins == 8)
+		ft_sa2(&stack_b->top);
+	else if (ins == 9)
+		ft_ss2(&stack_a->top, &stack_b->top);
+	else if (ins == 10)
+		stack_a->top = ft_pa2(&stack_a->top, &stack_b->top);
+	else if (ins == 11)
+		stack_b->top = ft_pb2(&stack_a->top, &stack_b->top);
+}
+
+void	print_list2(t_list *node)
+{
+	while (node)
+	{
+		printf("%d\n", node->data);
+		node = node->next;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 17:31:59 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/02/25 16:26:44 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/10 13:47:05 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,16 @@ int	ft_lstsize(t_list *node)
 		node = node->next;
 	}
 	return (size);
+}
+
+void	free_list(t_list *node)
+{
+	t_list	*tmp;
+
+	while (node)
+	{
+		tmp = node;
+		node = node->next;
+		free(tmp);
+	}
 }

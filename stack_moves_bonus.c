@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 09:59:39 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/06 18:07:33 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/09 17:46:57 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_ss2(t_list **stack_a, t_list **stack_b)
 	ft_sa2(stack_b);
 }
 
-void	ft_rr2(t_list **stack_a, t_list **stack_b)
+void	ft_rr2(t_list *stack_a, t_list *stack_b)
 {
 	ft_ra2(stack_a);
 	ft_ra2(stack_b);

@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 10:39:34 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/06 17:57:06 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/09 18:39:21 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ void	swap(int *a, int *b)
 	*b = tmp;
 }
 
-void	ft_sa2(t_list **stack, char a_or_b)
+void	ft_sa(t_list *stack, char a_or_b)
 {
 	t_list	*list;
 
-	if (!*stack || !stack)
+	if (!stack)
 		return ;
-	list = *stack;
+	list = stack;
 	if (list && list->next)
 	{
 		swap(&list->data, &list->next->data);
@@ -38,17 +38,17 @@ void	ft_sa2(t_list **stack, char a_or_b)
 	}
 }
 
-void	ft_ss2(t_list **stack_a, t_list **stack_b)
+void	ft_ss(t_list **stack_a, t_list **stack_b)
 {
-	ft_sa(stack_a, 'a');
-	ft_sa(stack_b, 'b');
+	ft_sa(*stack_a, 'a');
+	ft_sa(*stack_b, 'b');
 	write(1, "ss\n", 3);
 }
 
-void	ft_rr2(t_list **stack_a, t_list **stack_b)
+void	ft_rr(t_stack **stack_a, t_stack **stack_b)
 {
-	ft_ra(stack_a, 'a');
-	ft_ra(stack_b, 'b');
+	(*stack_a)->top = ft_ra(&(*stack_a)->top, 'w');
+	(*stack_b)->top = ft_ra(&(*stack_b)->top, 'w');
 	write(1, "rr\n", 3);
 }
 

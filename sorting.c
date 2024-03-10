@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 20:58:53 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/04 18:08:56 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/10 11:54:06 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@ void	sort2_3(t_stack *stack)
 	else if (stack->size == 2)
 	{
 		if (stack->top->data > stack->top->next->data)
-			ft_sa(&stack->top, 'a');
+			ft_sa(stack->top, 'a');
 	}
 	else if (stack->size == 4)
 		sort_4(stack);
 	else
 		sort_5(stack);
+	free_list(stack->top);
 	free(stack);
 }
 
@@ -40,18 +41,18 @@ void	sort3(t_stack *stack_a)
 	if (stack_a->top->data > b && b > c)
 	{
 		ft_ra(&stack_a->top, 'a');
-		ft_sa(&stack_a->top, 'a');
+		ft_sa(stack_a->top, 'a');
 	}
 	else if (stack_a->top->data > b && stack_a->top->data > c && c > b)
 		ft_ra(&stack_a->top, 'a');
 	else if (stack_a->top->data > b
 		&& stack_a->top->data < c && c > stack_a->top->data)
-		ft_sa(&stack_a->top, 'a');
+		ft_sa(stack_a->top, 'a');
 	else if (stack_a->top->data < b && stack_a->top->data > c && b > c)
 		ft_rra(stack_a, 'a');
 	else if (stack_a->top->data < b && stack_a->top->data < c && b > c)
 	{
-		ft_sa(&stack_a->top, 'a');
+		ft_sa(stack_a->top, 'a');
 		ft_ra(&stack_a->top, 'a');
 	}
 }
@@ -64,6 +65,8 @@ void	sort_4(t_stack *stack)
 	stack_b = NULL;
 	tmp = ft_min(stack->top);
 	get_min_top(stack, tmp);
+	if (!check_if_sorted(&stack->top))
+		return ;
 	stack_b = ft_pb(&stack->top, &stack_b);
 	indexing(stack);
 	sort3(stack);

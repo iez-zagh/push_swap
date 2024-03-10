@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 20:09:22 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/05 22:54:06 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/10 11:42:52 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,4 @@ int	ft_lstsize2(t_list *node)
 		node = node->next;
 	}
 	return (size);
-}
-
-void	print_list2(t_list *tmp)
-{
-	while (tmp)
-	{
-		t_list *node = tmp;
-		printf("%d\n", tmp->data);
-		tmp = tmp->next;
-		free (node);
-	}
 }

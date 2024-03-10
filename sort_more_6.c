@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 11:57:49 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/04 17:57:42 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/10 11:48:24 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ void	sorting(t_stack *sstack_a, t_stack *sstack_b)
 	}
 	indexing(sstack_a);
 	sstack_a->top = get_min_top(sstack_a, ft_min(sstack_a->top));
+	free_list(sstack_b->top);
+	free_list(sstack_a->top);
 	free(sstack_b);
 	free(sstack_a);
 }
@@ -101,7 +103,7 @@ void	pushing_to_b(t_stack **sstack_a, t_list **stack_a, t_list **stack_b)
 	while (mid > 0 && j > 3)
 	{
 		if ((*stack_a)->data > (*sstack_a)->mid_average)
-			*stack_a = ft_ra(stack_a, 'a');
+			ft_ra(stack_a, 'a');
 		else
 		{
 			*stack_b = ft_pb(stack_a, stack_b);

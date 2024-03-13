@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 20:11:45 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/10 11:42:17 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/11 23:31:57 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,13 @@ long	ft_atoi2(char *s)
 	return (res * sign);
 }
 
-int	check_if_sorted2(t_list **begin)
+int	check_if_sorted2(t_list *begin)
 {
-	t_list	*tmp;
-
-	tmp = *begin;
-	while (tmp && tmp->next)
+	while (begin && begin->next)
 	{
-		if (tmp->data > tmp->next->data)
+		if (begin->data > begin->next->data)
 			return (1);
-		tmp = tmp->next;
+		begin = begin->next;
 	}
 	return (0);
 }

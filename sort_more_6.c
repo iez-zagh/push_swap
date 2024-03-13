@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 11:57:49 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/10 11:48:24 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/12 12:45:16 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,12 @@ void	move_to_b(t_stack *sstack_a)
 	t_list	*stack_b;
 	t_list	*stack_a;
 	t_stack	*sstack_b;
-	int		j;
-	int		mid;
 
 	sstack_b = malloc(sizeof(t_stack));
 	if (!sstack_b)
-		exit (0);
-	j = sstack_a->size;
+		exit (1);
 	stack_a = sstack_a->top;
 	stack_b = NULL;
-	mid = sstack_a->size;
 	pushing_to_b(&sstack_a, &stack_a, &stack_b);
 	sstack_b->top = stack_b;
 	sstack_a->top = stack_a;

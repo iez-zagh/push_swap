@@ -6,16 +6,11 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 18:25:35 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/10 16:53:29 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/12 14:58:10 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
-
-void	f(void)
-{
-	system("leaks checker");
-}
 
 int	main(int ac, char **av)
 {
@@ -23,9 +18,18 @@ int	main(int ac, char **av)
 	t_stack	*stack_a;
 
 	if (ac == 1)
-		return (1);
+		return (0);
 	instrucs = NULL;
 	stack_a = prepare_stack2(ac, av);
+	instrucs = malloc(sizeof(t_list));
+	if (!instrucs)
+	{
+		free_list3(stack_a->top);
+		free(stack_a);
+		return (1);
+	}
+	(instrucs)->data = -100;
+	(instrucs)->next = NULL;
 	apply(&instrucs, stack_a);
 	sort(instrucs, stack_a);
 }

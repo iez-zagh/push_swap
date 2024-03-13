@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 12:16:04 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/02/22 17:16:46 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/10 20:50:33 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ int	count_count(const char *str)
 	return (word);
 }
 
-void	ft_int(int *a, int *b, int *c)
+void	ft_int(int *n1, int *n2, int *n3)
 {
-	*a = 0;
-	*b = 0;
-	*c = 0;
+	*n1 = 0;
+	*n2 = 0;
+	*n3 = 0;
 }
 
 char	**ft_free(char **p, int j)
@@ -62,24 +62,24 @@ char	**ft_free(char **p, int j)
 
 char	**fill(char const *str, char **p, int num_words)
 {
-	int	douz;
+	int	skip;
 	int	len;
 	int	j;
 
-	ft_int(&douz, &len, &j);
+	ft_int(&skip, &len, &j);
 	while (j < num_words)
 	{
-		if (*str != ' ' && douz == 0)
+		if (*str != ' ' && skip == 0)
 		{
-			douz = 1;
+			skip = 1;
 			len = 0;
 		}
-		else if ((*str == ' ' || *str == '\0') && douz == 1)
+		else if ((*str == ' ' || *str == '\0') && skip == 1)
 		{
 			p[j] = ft_substr(str - len, 0, len);
 			if (!p[j])
 				return (ft_free(p, j));
-			douz = 0;
+			skip = 0;
 			j++;
 		}
 		len++;
@@ -92,15 +92,15 @@ char	**ft_split(char const *s)
 {
 	char	**p;
 	char	**tmp;
-	int		kalimat;
+	int		words;
 
 	if (!s)
 		return (NULL);
-	kalimat = count_count(s);
-	p = malloc((kalimat + 1) * sizeof(char *));
+	words = count_count(s);
+	p = malloc((words + 1) * sizeof(char *));
 	if (!p)
 		return (NULL);
-	tmp = fill(s, p, kalimat);
+	tmp = fill(s, p, words);
 	if (tmp == NULL)
 		return (NULL);
 	*tmp = 0;

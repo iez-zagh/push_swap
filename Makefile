@@ -6,7 +6,7 @@ RESET_TEXT =\033[0m
 NAME = push_swap
 BONUS = checker
 CC = gcc
-FLAGS = -Wextra -Wall -Werror -g
+FLAGS = -Wextra -Wall -Werror
 
 # the source codes
 M_SOURCES = push_swap.c push_swap_utils.c helper_functions.c ft_split.c \

@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 09:59:39 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/09 17:46:57 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/12 01:30:58 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_sa2(t_list **stack)
 {
 	t_list	*list;
 
-	if (!*stack || !stack)
+	if (!*stack || !stack || ft_lstsize2(*stack) <= 1)
 		return ;
 	list = *stack;
 	if (list && list->next)
@@ -42,18 +42,4 @@ void	ft_rr2(t_list *stack_a, t_list *stack_b)
 {
 	ft_ra2(stack_a);
 	ft_ra2(stack_b);
-}
-
-int	ft_search(t_list *node, int *tab, int size)
-{
-	int	i;
-
-	i = 0;
-	while (i < size)
-	{
-		if (tab[i] == node->data)
-			return (i);
-		i++;
-	}
-	return (0);
 }

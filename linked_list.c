@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 14:35:44 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/04 11:15:34 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/11 23:37:01 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@ t_list	*ft_lstlast(t_list *lst)
 	if (lst == NULL)
 		return (NULL);
 	while (lst->next != NULL)
-	{
 		lst = lst->next;
-	}
 	return (lst);
 }
 
@@ -54,9 +52,7 @@ t_list	*ft_lstnew(int content)
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	if (lst && new)
-	{
 		new->next = *lst;
-	}
 	if (new)
 		*lst = new;
 }

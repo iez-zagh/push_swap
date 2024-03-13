@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 20:58:53 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/10 11:54:06 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/11 23:31:23 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	sort_4(t_stack *stack)
 	stack_b = NULL;
 	tmp = ft_min(stack->top);
 	get_min_top(stack, tmp);
-	if (!check_if_sorted(&stack->top))
+	if (!check_if_sorted(stack->top))
 		return ;
 	stack_b = ft_pb(&stack->top, &stack_b);
 	indexing(stack);

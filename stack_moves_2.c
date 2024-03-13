@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 17:25:58 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/10 11:42:10 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/11 23:13:38 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,17 @@ t_list	*ft_pa(t_list **stack_a, t_list **stack_b)
 void	ft_rra(t_stack *sstack, char a_or_b)
 {
 	t_list	*tmp;
-	int		swap;
-	t_list	*list;
 	t_list	*stack;
 
 	stack = sstack->top;
 	tmp = ft_lstlast(stack);
-	swap = tmp->data;
 	ft_before_last(stack)->next = NULL;
-	free(tmp);
-	list = malloc(sizeof(t_list));
-	list->data = swap;
-	ft_lstadd_front(&stack, list);
+	ft_lstadd_front(&stack, tmp);
 	if (a_or_b == 'a')
 		write(1, "rra\n", 4);
 	else if (a_or_b == 'b')
 		write(1, "rrb\n", 4);
-	sstack->top = list;
+	sstack->top = tmp;
 }
 
 void	ft_rrr(t_stack *stack_a, t_stack *stack_b)

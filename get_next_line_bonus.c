@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 17:30:41 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/05 14:25:47 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/11 16:57:10 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ char	*ft_read(int fd, char **buffer, char *str)
 	{
 		free (*buffer);
 		*buffer = NULL;
-		return (free(str), NULL);
+		print_error2();
+		exit (1);
 	}
 	while (1)
 	{

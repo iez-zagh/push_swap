@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 18:27:55 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/10 16:53:45 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/12 12:36:03 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,14 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
 # endif
+
 // the nedeed libraries
 # include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <limits.h>
 
 // for Ansi colors
-# define RED_TEXT "\033[1:31m"
+# define RED_TEXT "\033[1;31m"
 # define GREEN_TEXT "\033[1;32m"
 # define YELLOW_TEXT "\033[1;33m"
 # define RESET_TEXT "\033[0m"
@@ -67,9 +66,8 @@ t_list	*ft_lstlast2(t_list *lst);
 void	ft_lstadd_back2(t_list **lst, t_list *new);
 char	**ft_split2(char const *s);
 void	print_error2(void);
-void	print_list2(t_list *node);
 t_stack	*filling2(char **res);
-int		check_if_sorted2(t_list **begin);
+int		check_if_sorted2(t_list *begin);
 char	*get_next_line(int fd);
 char	*ft_strjoin3(char *s1, char *s2);
 int		ft_strlen3(char *str);
@@ -86,8 +84,6 @@ void	swap(int *a, int *b);
 void	sorting(t_stack *stack_a, t_stack *stack_b, int ins);
 void	ft_sa2(t_list **stack);
 void	ft_ss2(t_list **stack_a, t_list **stack_b);
-void	ft_rr2(t_list *stack_a, t_list *stack_b);
-int		ft_search(t_list *node, int *tab, int size);
 t_list	*ft_pa2(t_list **stack_a, t_list **stack_b);
 void	ft_rra2(t_stack *sstack);
 void	ft_rrr2(t_stack *stack_a, t_stack *stack_b);

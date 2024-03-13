@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 19:57:00 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/05 15:25:29 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/11 23:31:16 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	filling(char **res)
 
 void	sort0(t_stack *stack_a)
 {
-	if (!check_if_sorted(&stack_a->top))
+	if (!check_if_sorted(stack_a->top))
 		exit (0);
 	indexing(stack_a);
 	if (stack_a->size <= 5)

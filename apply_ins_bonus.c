@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 22:37:09 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/10 16:54:24 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/12 13:26:39 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@ void	apply(t_list **ins, t_stack *stack_a)
 	char	*res;
 	t_list	*tmp;
 
-	*ins = malloc(sizeof(t_list));
-	(*ins)->data = -100;
-	(*ins)->next = NULL;
 	res = get_next_line(0);
 	while (res)
 	{
@@ -28,9 +25,9 @@ void	apply(t_list **ins, t_stack *stack_a)
 		free(res);
 		if (u == 0)
 		{
-			write(2, "Error\n", 6);
+			print_error2();
 			free(stack_a);
-			exit (0);
+			exit (1);
 		}
 		ft_lstadd_back2(ins, ft_lstnew2(u));
 		res = get_next_line(0);
@@ -84,7 +81,7 @@ void	sort(t_list *ins, t_stack *stack_a)
 		sorting(stack_a, stack_b, ins->data);
 		ins = ins->next;
 	}
-	if (!check_if_sorted2(&stack_a->top) && ft_lstsize2(stack_b->top) == 0
+	if (!check_if_sorted2(stack_a->top) && ft_lstsize2(stack_b->top) == 0
 		&& ft_lstsize2(stack_a->top) > 0)
 		write(1, "OK\n", 3);
 	else
@@ -122,7 +119,10 @@ void	sorting(t_stack *stack_a, t_stack *stack_b, int ins)
 	else if (ins == 5)
 		stack_b->top = ft_ra2(stack_b->top);
 	else if (ins == 6)
-		ft_rr2(stack_a->top, stack_b->top);
+	{
+		stack_a->top = ft_ra2(stack_a->top);
+		stack_b->top = ft_ra2(stack_b->top);
+	}
 	else if (ins == 7)
 		ft_sa2(&stack_a->top);
 	else if (ins == 8)
@@ -133,13 +133,4 @@ void	sorting(t_stack *stack_a, t_stack *stack_b, int ins)
 		stack_a->top = ft_pa2(&stack_a->top, &stack_b->top);
 	else if (ins == 11)
 		stack_b->top = ft_pb2(&stack_a->top, &stack_b->top);
-}
-
-void	print_list2(t_list *node)
-{
-	while (node)
-	{
-		printf("%d\n", node->data);
-		node = node->next;
-	}
 }

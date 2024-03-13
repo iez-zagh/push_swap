@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 17:39:33 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/10 11:45:58 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/12 12:35:41 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 // the nedeed libraries
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 
 // for Ansi colors
 # define RED_TEXT "\033[1:31m"
@@ -69,13 +68,11 @@ t_list	*ft_before_last(t_list *begin);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_sa(t_list *stack_a, char a_or_b);
 t_list	*ft_ra(t_list **stack, char a_or_b);
-void	ft_rr(t_stack **stack_a, t_stack **stack_b);
 void	ft_rra(t_stack *sstack, char a_or_b);
-void	ft_ss(t_list **stack_a, t_list **stack_b);
 void	ft_rrr(t_stack *stack_a, t_stack *stack_b);
 t_list	*ft_pb(t_list **stack_a, t_list **stack_b);
 int		ft_lstsize(t_list *node);
-int		check_if_sorted(t_list **begin);
+int		check_if_sorted(t_list *begin);
 t_list	*ft_pa(t_list **stack_a, t_list **stack_b);
 void	filling(char **res);
 t_list	*ft_max(t_list *node);

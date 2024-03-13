@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 12:16:04 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/04 21:20:12 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/13 11:28:44 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ int	count_count(const char *str)
 {
 	int		i;
 	int		j;
-	int		word;
+	int		wrd;
 
 	i = 0;
 	j = 0;
-	word = 0;
+	wrd = 0;
 	while (str[i])
 	{
 		if (str[i] != ' ' && j == 0)
 		{
 			j = 1;
-			word++;
+			wrd++;
 		}
 		else if (str[i] == ' ')
 		{
@@ -34,7 +34,7 @@ int	count_count(const char *str)
 		}
 		i++;
 	}
-	return (word);
+	return (wrd);
 }
 
 void	ft_int(int *a, int *b, int *c)

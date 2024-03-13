@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 13:23:46 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/10 11:40:45 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/13 11:29:26 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,24 @@ void	count_cost(t_stack *sstack_b, t_stack *sstack_a)
 
 void	geting_count(t_stack *stack)
 {
-	t_list	*stack_;
+	t_list	*_stack;
 	int		size;
 
 	size = ft_lstsize(stack->top);
-	stack_ = stack->top;
-	while (stack_)
+	_stack = stack->top;
+	while (_stack)
 	{
-		if (stack_->index_to_m == 1)
+		if (_stack->index_to_m == 1)
 		{
-			stack_->cost = stack_->index;
-			stack_->cost2 = stack_->index;
+			_stack->cost = _stack->index;
+			_stack->cost2 = _stack->index;
 		}
 		else
 		{
-			stack_->cost = size - stack_->index;
-			stack_->cost2 = size - stack_->index;
+			_stack->cost = size - _stack->index;
+			_stack->cost2 = size - _stack->index;
 		}
-		stack_ = stack_->next;
+		_stack = _stack->next;
 	}
 }
 

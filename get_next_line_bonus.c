@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 17:30:41 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/03/13 11:31:51 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/03/13 11:32:21 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 char	*ft_one_line(char *str, int j)
 {
 	int		i;
-	char	*str2;
+	char	*s;
 
 	i = 0;
 	if (!str)
 		return (NULL);
-	str2 = malloc(j + 2);
-	if (!str2)
+	s = malloc(j + 2);
+	if (!s)
 		return (NULL);
 	while (i <= j)
 	{
-		str2[i] = str[i];
+		s[i] = str[i];
 		i++;
 	}
-	str2[i] = '\0';
-	return (str2);
+	s[i] = '\0';
+	return (s);
 }
 
 char	*check(char **buffer, int j)
